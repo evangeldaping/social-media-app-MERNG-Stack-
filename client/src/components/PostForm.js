@@ -7,32 +7,25 @@ import { useForm } from '../util/hooks';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 
 function PostForm() {
-  const { values, onChange, onSubmit } = useForm(createPostCallback, {
-    body: ''
-  });
+    const { values, onChange, onSubmit } = useForm(createPostCallback, {
+        body: "",
+    });
 
-  const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
-    variables: values,
-    update(proxy, result) {
-      const data = proxy.readQuery({
-        query: FETCH_POSTS_QUERY,
-      });
-      proxy.writeQuery({
-        query: FETCH_POSTS_QUERY,
-        data: {
-          getPosts: [result.data.createPost, ...data.getPosts],
+    const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
+        variables: values,
+
+        update(proxy, result) {
+            values.body = "";
         },
-      });
-      values.body = "";
-    },
-    onError(err) {
-      return err;
-    },
-  });
+        onError(err) {
+            //console.log(err)
+        },
+        refetchQueries: [{ query: FETCH_POSTS_QUERY }],
+    });
 
-  function createPostCallback() {
-    createPost();
-  }
+    function createPostCallback() {
+        createPost();
+    }
 
   return (
     <>
