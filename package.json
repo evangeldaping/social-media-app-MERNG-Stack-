@@ -1,9 +1,9 @@
 {
   "name": "merng",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "scripts": {
+  "scripts": { 
+    "serve": "node index",
     "start": "nodemon index"
   },
   "keywords": [],
@@ -14,9 +14,19 @@
     "bcryptjs": "^2.4.3",
     "graphql": "^15.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.15"
+    "mongoose": "^5.10.15",
+    "node": "^15.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evangeldaping/social-media-app-MERNG-Stack-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evangeldaping/social-media-app-MERNG-Stack-/issues"
+  },
+  "homepage": "https://github.com/evangeldaping/social-media-app-MERNG-Stack-#readme",
+  "description": ""
 }
